@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Pricing — AI PDF to Excel Converter Plans | PDF2DataAI" description="Simple transparent pricing for AI PDF data extraction. Free tier with 10 pages/mo. Pro ($19) and Business ($49) plans available. No hidden fees.">
+  <Nav />
+  <main class="pt-24">
+    <section class="mx-auto max-w-7xl px-6 py-20 text-center">
+      <span class="mb-6 inline-block text-xs font-semibold uppercase tracking-widest text-brand-400">Pricing</span>
+      <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">Simple, transparent pricing</h1>
+      <p class="mt-4 text-lg text-neutral-400">No hidden fees. No surprise charges. Pay only for what you need.</p>
+
+      <div class="mx-auto mt-16 grid max-w-5xl gap-6 md:grid-cols-3">
+        {[
+          {
+            name: "Free",
+            price: "$0",
+            pages: "10 pages/mo",
+            features: ["Confidence-scored extraction", "Per-field accuracy display", "Manual flag review", "XLSX & CSV export", "Community support"],
+            cta: "Get started",
+          },
+          {
+            name: "Pro",
+            price: "$19",
+            pages: "500 pages/mo",
+            features: ["Everything in Free", "Auto-flag below 90%", "Batch processing (50 files)", "OCR for scanned docs", "API access", "Priority support"],
+            popular: true,
+            cta: "Subscribe",
+          },
+          {
+            name: "Business",
+            price: "$49",
+            pages: "2,000 pages/mo",
+            features: ["Everything in Pro", "Unlimited batch size", "Webhooks & automation", "Team accounts", "Dedicated support", "Custom confidence thresholds"],
+            cta: "Subscribe",
+          },
+        ].map((p) => (
+          <div class={`relative flex flex-col rounded-2xl border p-8 text-left ${
+            p.popular ? 'border-brand-500 bg-brand-500/[0.04] shadow-2xl shadow-brand-500/20' : 'border-neutral-800 bg-neutral-900/50'
+          }`}>
+            {p.popular && <span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-brand-500 px-4 py-1 text-xs font-semibold text-white shadow-lg">Most popular</span>}
+            <h3 class="mb-1 text-xl font-semibold">{p.name}</h3>
+            <div class="mb-1">
+              <span class="text-4xl font-bold">{p.price}</span>
+              <span class="text-neutral-500">/month</span>
+            </div>
+            <p class="mb-6 text-sm text-neutral-500">{p.pages}</p>
+            <ul class="mb-8 flex-1 space-y-3">
+              {p.features.map((f) => (
+                <li class="flex items-start gap-3 text-sm text-neutral-300">
+                  <svg class="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                  {f}
+                </li>
+              ))}
+            </ul>
+            <a href="/upload" class={`flex w-full items-center justify-center rounded-xl py-3 text-sm font-semibold transition-all ${
+              p.popular ? 'bg-neutral-100 text-neutral-950 shadow-lg shadow-brand-500/20 hover:bg-neutral-200' : 'border border-neutral-800 text-neutral-300 hover:border-neutral-700 hover:text-neutral-100'
+            }`}>{p.cta}</a>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-3xl px-6 py-20">
+      <div class="rounded-2xl border border-neutral-800 bg-neutral-900/30 p-8">
+        <h2 class="text-xl font-bold text-center mb-8">Compare with Expensify</h2>
+        <div class="overflow-hidden rounded-xl border border-neutral-800">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-neutral-800 bg-neutral-900/50">
+                <th class="px-5 py-3 text-left font-medium text-neutral-400">Plan</th>
+                <th class="px-5 py-3 text-center font-medium text-neutral-500">Expensify</th>
+                <th class="px-5 py-3 text-center font-medium text-brand-400">PDF2DataAI</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-neutral-800">
+              {[
+                { plan: "Free tier", them: "25 SmartScans only", us: "10 full extractions" },
+                { plan: "Entry paid plan", them: "$5/user/mo (billed per seat)", us: "$19 flat (500 pages)" },
+                { plan: "BYOC penalty", them: "100% premium (+$9/user)", us: "No penalty" },
+                { plan: "Inactive billing", them: "Pay for unused seats", us: "Pay per page, not per seat" },
+                { plan: "Confidence scoring", them: "Not available", us: "Included in all plans" },
+              ].map((r) => (
+                <tr class="transition-colors hover:bg-neutral-900/30">
+                  <td class="px-5 py-3.5 font-medium">{r.plan}</td>
+                  <td class="px-5 py-3.5 text-center text-neutral-500">{r.them}</td>
+                  <td class="px-5 py-3.5 text-center text-emerald-400">{r.us}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

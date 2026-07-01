@@ -1,0 +1,22 @@
+---
+const { transparent = false } = Astro.props;
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 border-b backdrop-blur-xl transition-colors border-neutral-800/50">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+    <a href="/" class="flex items-center gap-2.5 text-lg font-semibold tracking-tight">
+      <img src="/icon.png" alt="PDF2DataAI" class="h-8 w-8 rounded-lg shadow-lg shadow-brand-500/25" />
+      PDF2DataAI
+    </a>
+    <div class="hidden items-center gap-8 text-sm font-medium text-neutral-400 sm:flex">
+      <a href="/#features" class="transition-colors hover:text-neutral-100">Features</a>
+      <a href="/how-it-works" class="transition-colors hover:text-neutral-100">How it works</a>
+      <a href="/pricing" class="transition-colors hover:text-neutral-100">Pricing</a>
+      <a href="/blog" class="transition-colors hover:text-neutral-100">Blog</a>
+      <a href="/dashboard" class="transition-colors hover:text-neutral-100">Dashboard</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="/upload" class="rounded-lg bg-brand-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-500/25 transition-all hover:bg-brand-600">Upload document</a>
+    </div>
+  </div>
+</nav>

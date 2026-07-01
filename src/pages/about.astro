@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="About Us — AI PDF to Excel Extraction | PDF2DataAI" description="Learn about PDF2DataAI's mission to bring transparency to AI document extraction. We help teams extract data from PDFs with confidence scoring.">
+  <Nav />
+  <main class="pt-24">
+    <section class="mx-auto max-w-3xl px-6 py-20">
+      <span class="mb-6 inline-block text-xs font-semibold uppercase tracking-widest text-brand-400">About</span>
+      <h1 class="mb-8 text-4xl font-bold tracking-tight">About PDF2DataAI</h1>
+
+      <div class="space-y-6 text-sm leading-relaxed text-neutral-300">
+        <h2 class="text-xl font-semibold text-neutral-100">Our Mission</h2>
+        <p>PDF2DataAI was founded with a simple mission: <strong>bring transparency to AI document extraction</strong>. We believe that when AI helps process your documents, you deserve to know exactly how confident it is in every piece of data it extracts.</p>
+
+        <p>Existing tools like Expensify treat their extraction as a black box — they claim high accuracy but give you no visibility into which fields might be wrong. We saw this as a fundamental flaw. When you're processing invoices, receipts, and forms, a single misread field can cause significant financial errors.</p>
+
+        <p>Our AI-powered PDF to Excel converter solves this by showing a <strong>confidence score for every single field</strong>. Fields below 90% confidence are automatically flagged for human review. You only check what needs attention — saving up to 80% of review time while maintaining accuracy.</p>
+
+        <h2 class="text-xl font-semibold text-neutral-100">Why We Built This</h2>
+        <p>Finance teams, accountants, and data professionals spend countless hours manually verifying AI-extracted data because they can't trust the output blindly. We experienced this pain ourselves and realized the solution wasn't better AI — it was <strong>transparent AI</strong>. By showing confidence scores, we make the AI's uncertainty visible, turning document review from an all-or-nothing gamble into a targeted, efficient process.</p>
+
+        <p>Our smart document scanner handles invoices, receipts, purchase orders, forms, and table-heavy reports. Whether you need automated receipt processing for expense reports or bulk invoice data extraction for accounting, PDF2DataAI gives you structured data you can actually trust.</p>
+
+        <h2 class="text-xl font-semibold text-neutral-100">Our Values</h2>
+        <ul class="list-disc space-y-2 pl-6">
+          <li><strong>Transparency:</strong> Every extraction shows its confidence. No black boxes.</li>
+          <li><strong>Accuracy:</strong> Our AI models achieve 90-99% accuracy on clean documents.</li>
+          <li><strong>Privacy:</strong> Your documents stay secure. We never share your data.</li>
+          <li><strong>Simplicity:</strong> Upload, extract, export. No complex setup or training needed.</li>
+        </ul>
+
+        <h2 class="text-xl font-semibold text-neutral-100">Our Team</h2>
+        <p>We are a small team of engineers, AI researchers, and product designers passionate about making document processing more transparent and efficient. Combined, we have decades of experience in machine learning, OCR technology, and enterprise software development.</p>
+
+        <p class="pt-4"><a href="/contact" class="inline-flex items-center gap-2 rounded-xl border border-neutral-800 px-6 py-3 text-sm font-semibold text-neutral-300 transition-all hover:border-neutral-700 hover:text-neutral-100">Get in touch <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></a></p>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

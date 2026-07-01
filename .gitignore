@@ -17,8 +17,12 @@ pnpm-debug.log*
 .env
 .env.production
 
-# macOS-specific files
+# InsForge project config (contains API keys)
+.insforge/
+
+# OS files
 .DS_Store
+Thumbs.db
 
 # jetbrains setting folder
 .idea/

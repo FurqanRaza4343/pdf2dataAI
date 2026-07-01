@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="How It Works — AI PDF Data Extraction in 4 Steps | PDF2DataAI" description="Learn how PDF2DataAI extracts document data in 4 steps — upload, AI extraction, confidence scoring, and export to Excel or CSV.">
+  <Nav />
+  <main class="pt-24">
+    <section class="mx-auto max-w-7xl px-6 py-20 text-center">
+      <span class="mb-6 inline-block text-xs font-semibold uppercase tracking-widest text-brand-400">How it works</span>
+      <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">Extract with confidence in 4 steps</h1>
+      <p class="mt-4 text-lg text-neutral-400">From upload to export, every field is scored for accuracy.</p>
+    </section>
+
+    <section class="mx-auto max-w-5xl px-6 pb-20">
+      <div class="grid gap-8 md:grid-cols-2">
+        {[
+          { step: "01", title: "Upload your document", desc: "Drag & drop a PDF, receipt, invoice, or scanned document. We accept PDF, PNG, JPG up to 50 MB per file.", img: "M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" },
+          { step: "02", title: "AI extracts every field", desc: "Our engine parses text, tables, and form fields using advanced OCR and structured data extraction.", img: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" },
+          { step: "03", title: "Confidence scoring", desc: "Every extracted field gets a 0&ndash;100% confidence score. Fields below 90% are automatically flagged with an amber warning.", img: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" },
+          { step: "04", title: "Review & export", desc: "Correct flagged fields in one click. Then export to Excel (.xlsx), CSV, or JSON with preserved structure.", img: "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" },
+        ].map((s) => (
+          <div class="rounded-2xl border border-neutral-800 bg-neutral-900/30 p-8 transition-all hover:border-neutral-700">
+            <div class="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-500/10 text-brand-400">
+              <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={s.img}/></svg>
+            </div>
+            <span class="mb-2 block text-sm font-semibold text-brand-400">Step {s.step}</span>
+            <h3 class="mb-3 text-xl font-semibold">{s.title}</h3>
+            <p class="text-sm leading-relaxed text-neutral-400">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-3xl px-6 pb-20">
+      <div class="rounded-2xl border border-neutral-800 bg-neutral-900/30 p-8">
+        <h2 class="mb-6 text-center text-xl font-bold">Confidence score color guide</h2>
+        <div class="space-y-4">
+          {[
+            { color: "bg-emerald-500", bg: "bg-emerald-500/10", text: "text-emerald-400", range: "90&ndash;100%", label: "High confidence", desc: "AI is very sure. No review needed." },
+            { color: "bg-amber-500", bg: "bg-amber-500/10", text: "text-amber-400", range: "70&ndash;89%", label: "Medium confidence", desc: "Flagged for review. Verify before using." },
+            { color: "bg-red-500", bg: "bg-red-500/10", text: "text-red-400", range: "0&ndash;69%", label: "Low confidence", desc: "AI is uncertain. Manual entry recommended." },
+          ].map((item) => (
+            <div class={`flex items-center gap-4 rounded-xl ${item.bg} p-4`}>
+              <span class={`h-8 w-8 shrink-0 rounded-full ${item.color}`} />
+              <div class="flex-1">
+                <div class="flex items-center gap-3">
+                  <span class="font-semibold">{item.label}</span>
+                  <span class={`text-xs font-medium ${item.text}`}>{item.range}</span>
+                </div>
+                <p class="text-sm text-neutral-400">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

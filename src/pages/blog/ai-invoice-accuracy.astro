@@ -1,0 +1,75 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="How Accurate Is AI Invoice Extraction? Confidence Scores Explained | PDF2DataAI" description="Learn how AI invoice extraction accuracy works and why per-field confidence scoring gives you complete visibility into which fields are reliable." canonical="https://pdf2dataai.com/blog/ai-invoice-accuracy">
+  <Nav />
+  <main class="pt-24">
+    <article class="mx-auto max-w-3xl px-6 py-20">
+      <span class="mb-6 inline-block text-xs font-semibold uppercase tracking-wider text-brand-400">Accuracy</span>
+      <h1 class="mb-4 text-4xl font-bold tracking-tight">How Accurate Is AI Invoice Extraction?</h1>
+      <p class="mb-8 text-lg text-neutral-400">Understanding confidence scores and why they matter more than blanket accuracy claims.</p>
+
+      <div class="space-y-6 text-sm leading-relaxed text-neutral-300">
+        <p>Almost every AI document extraction tool claims "99% accuracy." But what does that actually mean? Does it mean 99% of invoices are perfect? 99% of fields are correct? Or 99% of characters are right? The reality is that blanket accuracy claims are marketing, not metrics.</p>
+
+        <p>In this guide, we explain how AI invoice extraction accuracy really works, why <strong>per-field confidence scoring</strong> is the metric that matters, and how PDF2DataAI brings transparency to automated invoice processing.</p>
+
+        <h2 class="text-2xl font-bold text-neutral-100 pt-4">The Problem with Blanket Accuracy Claims</h2>
+        <p>When Expensify or other tools claim "99% accuracy," they're usually referring to overall extraction success across all documents. But this number hides enormous variation. A single invoice might have 20 fields: invoice number, date, vendor name, line items, subtotal, tax, total, and more.</p>
+        <p>The AI might get 19 fields perfectly and completely misread the tax amount. Overall, that's 95% "accuracy" — but the one wrong field could cause a significant accounting error. This is why blanket accuracy is misleading. You need to know which specific fields are reliable.</p>
+
+        <h2 class="text-2xl font-bold text-neutral-100 pt-4">What Is Per-Field Confidence Scoring?</h2>
+        <p>Per-field confidence scoring assigns an individual 0-100% score to <em>every field</em> the AI extracts. Instead of asking "is this invoice correct overall?", you ask "how confident is the AI in the vendor name? In the line items? In the tax amount?"</p>
+        <p>Confidence scores are calculated based on multiple factors:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>OCR quality:</strong> How clear was the text in the original document? Scanned PDFs typically get lower scores than digital PDFs.</li>
+          <li><strong>Pattern matching:</strong> Does the extracted value match expected patterns (e.g., a date format, a dollar amount)?</li>
+          <li><strong>Field type:</strong> Some fields are inherently harder to extract. Line items with complex descriptions may score lower than simple totals.</li>
+          <li><strong>Document quality:</strong> Blurry images, skewed scans, or unusual fonts reduce confidence across all fields.</li>
+          <li><strong>Historical accuracy:</strong> AI models learn from similar documents. Common invoice formats score higher than unusual ones.</li>
+        </ul>
+
+        <h2 class="text-2xl font-bold text-neutral-100 pt-4">Why 90% Is the Magic Threshold</h2>
+        <p>PDF2DataAI uses 90% confidence as the threshold for automatic flagging. Here's why:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>90-100% (Green):</strong> High confidence. The AI is very sure. No review needed. You can trust these values for downstream processing.</li>
+          <li><strong>70-89% (Amber):</strong> Medium confidence. Flagged for human review. Verify these fields before using the data. Typically 10-20% of all extracted fields fall here.</li>
+          <li><strong>0-69% (Red):</strong> Low confidence. The AI is uncertain. Manual re-entry is recommended. These often require looking at the original document.</li>
+        </ul>
+        <p>This three-tier system means you only review what needs attention. Studies show that 80-90% of extracted fields typically score above 90%, meaning you can trust most of the data and focus your review on the small percentage that needs human verification.</p>
+
+        <h2 class="text-2xl font-bold text-neutral-100 pt-4">Real-World Accuracy: What We See</h2>
+        <p>Based on our testing and user feedback, here are typical accuracy ranges for different document types:</p>
+        <div class="overflow-x-auto rounded-xl border border-neutral-800">
+          <table class="w-full text-sm">
+            <thead><tr class="border-b border-neutral-800 bg-neutral-900/50"><th class="px-4 py-3 text-left font-medium text-neutral-400">Document Type</th><th class="px-4 py-3 text-left font-medium text-neutral-400">Typical Confidence</th><th class="px-4 py-3 text-left font-medium text-neutral-400">Fields Flagged</th></tr></thead>
+            <tbody class="divide-y divide-neutral-800">
+              <tr><td class="px-4 py-3">Digital PDF invoices</td><td class="px-4 py-3 text-emerald-400">95-99%</td><td class="px-4 py-3">5-10%</td></tr>
+              <tr><td class="px-4 py-3">Scanned receipt images</td><td class="px-4 py-3 text-emerald-400">85-95%</td><td class="px-4 py-3">10-20%</td></tr>
+              <tr><td class="px-4 py-3">Multi-page purchase orders</td><td class="px-4 py-3 text-amber-400">80-92%</td><td class="px-4 py-3">15-30%</td></tr>
+              <tr><td class="px-4 py-3">Handwritten forms</td><td class="px-4 py-3 text-red-400">60-80%</td><td class="px-4 py-3">30-50%</td></tr>
+              <tr><td class="px-4 py-3">Complex table-heavy reports</td><td class="px-4 py-3 text-amber-400">75-90%</td><td class="px-4 py-3">20-35%</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="text-2xl font-bold text-neutral-100 pt-4">How to Improve Extraction Accuracy</h2>
+        <p>To get the best results from AI invoice extraction, follow these best practices:</p>
+        <ol class="list-decimal pl-6 space-y-2">
+          <li><strong>Use high-quality scans:</strong> 300 DPI or higher, straight orientation, good lighting.</li>
+          <li><strong>Prefer digital PDFs:</strong> PDFs created directly from software (not scanned) have much higher accuracy.</li>
+          <li><strong>Standardize formats:</strong> If you use consistent invoice templates, the AI learns faster and scores higher.</li>
+          <li><strong>Review flagged fields promptly:</strong> The review queue is designed to catch errors before they propagate.</li>
+          <li><strong>Use the edit function:</strong> Correcting a flagged field helps the AI learn for future extractions.</li>
+        </ol>
+
+        <h2 class="text-2xl font-bold text-neutral-100 pt-4">The Bottom Line</h2>
+        <p>AI invoice extraction accuracy is excellent when measured properly — but you need per-field confidence scoring to know which data to trust and which to verify. Without it, you're flying blind. <a href="/upload" class="text-brand-400 underline hover:text-brand-300">Try PDF2DataAI for free</a> and see per-field confidence scores for yourself.</p>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Layout>

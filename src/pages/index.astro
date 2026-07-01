@@ -1,11 +1,378 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "PDF2DataAI - PDF to Excel AI Converter",
+  "url": "https://pdf2dataai.com",
+  "applicationCategory": "Document Processing",
+  "operatingSystem": "Web",
+  "description": "Free AI-powered PDF to Excel converter with confidence scoring. Extract tables, invoices, receipts and forms automatically.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does AI convert PDF to Excel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PDF2DataAI uses advanced OCR and machine learning to scan your PDF, identify tables, text fields, and form structures, then extracts them into structured Excel data. Each field gets a confidence score so you know exactly how reliable the extraction is."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can AI accurately extract data from PDFs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Modern AI extraction achieves 90-99% accuracy on clean documents. PDF2DataAI takes transparency further by showing a confidence score for every extracted field. Fields below 90% confidence are automatically flagged for human review, ensuring you never trust incorrect data."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the best AI tool for PDF data extraction?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The best tool depends on your needs. PDF2DataAI stands out because it combines AI-powered extraction with transparent confidence scoring per field, support for invoices, receipts, forms and tables, batch processing, OCR for scanned documents, and multi-format export to Excel, CSV, and JSON."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How to convert PDF to Excel using AI for free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Simply upload your PDF to PDF2DataAI's free tier. The AI automatically detects tables and data fields, extracts them, and lets you download the results as Excel (.xlsx) or CSV. The free plan covers up to 10 pages per month with full confidence scoring."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is AI PDF extraction better than traditional OCR?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Traditional OCR only converts images to text. AI extraction understands document structure, identifies tables, separates headers from data, recognizes form fields, and can handle complex layouts. PDF2DataAI combines OCR with AI to deliver structured data rather than raw text."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How to extract table data from PDF using AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PDF2DataAI automatically detects tables in your PDF, including merged cells, nested layouts, and multi-page tables. The AI preserves column structure, data types, and formatting, then exports to Excel with proper cell mapping. No manual setup or template creation needed."
+      }
+    }
+  ]
+};
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="PDF to Excel AI — Free AI Document Extraction with Confidence Scoring" description="Convert PDFs to Excel with AI-powered confidence scoring. Extract tables, invoices, and receipts with per-field accuracy scores. Free tier available. Try now.">
+  <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <Nav />
+  <main class="relative pt-16">
+    <div class="pointer-events-none absolute inset-0 top-0 z-0 h-[1200px] bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(124,58,237,0.15),transparent)]" />
+
+    <section class="relative z-10 mx-auto max-w-7xl px-6 pt-32 pb-24 text-center">
+      <div class="mb-8 inline-flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-900/60 px-4 py-1.5 text-sm text-neutral-400 backdrop-blur-sm animate-fade-in">
+        <span class="h-2 w-2 rounded-full bg-emerald-500 shadow-sm shadow-emerald-500/50" />
+        AI-powered PDF to Excel conversion
+      </div>
+      <h1 class="mx-auto max-w-5xl text-5xl font-extrabold leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl animate-fade-up">
+        PDF to Excel AI &mdash; Extract Data<br />
+        <span class="bg-gradient-to-r from-brand-300 via-brand-400 to-brand-500 bg-clip-text text-transparent">with Per-Field Confidence Scoring</span>
+      </h1>
+      <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-neutral-400 animate-fade-up animate-delay-100">
+        Upload invoices, receipts, forms, or any PDF. Our <strong>AI invoice extractor</strong> and <strong>smart document scanner</strong> extracts structured data and assigns a confidence score to <em>every field</em>. Fields below 90% are automatically flagged for human review.
+      </p>
+      <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row animate-fade-up animate-delay-200">
+        <a href="/upload" class="inline-flex items-center gap-2 rounded-xl bg-neutral-100 px-8 py-4 text-base font-semibold text-neutral-950 shadow-2xl shadow-brand-500/25 transition-all hover:bg-neutral-200 hover:shadow-brand-500/35">
+          Upload your first PDF
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+        </a>
+        <a href="/how-it-works" class="inline-flex items-center gap-2 rounded-xl border border-neutral-800 px-8 py-4 text-base font-semibold text-neutral-300 transition-all hover:border-neutral-700 hover:text-neutral-100">
+          See how it works
+        </a>
+      </div>
+      <div class="mt-16 flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-sm text-neutral-500 animate-fade-up animate-delay-300">
+        <span class="flex items-center gap-2">
+          <svg class="h-4 w-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          Per-field confidence scores
+        </span>
+        <span class="flex items-center gap-2">
+          <svg class="h-4 w-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          Flagged for review below 90%
+        </span>
+        <span class="flex items-center gap-2">
+          <svg class="h-4 w-4 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          Export to XLSX &amp; CSV
+        </span>
+      </div>
+
+      <!-- Format Selector -->
+      <div class="mt-16 mx-auto max-w-3xl">
+        <div class="rounded-2xl border border-neutral-800 bg-neutral-900/60 backdrop-blur-xl p-6 shadow-2xl shadow-neutral-900/50">
+          <div class="flex flex-col gap-5 sm:flex-row sm:items-end sm:gap-4">
+            <div class="flex-1">
+              <label class="mb-2 block text-xs font-semibold uppercase tracking-wider text-neutral-500">Input format</label>
+              <div class="relative">
+                <select id="input-format" class="w-full appearance-none rounded-xl border border-neutral-700 bg-neutral-950 px-4 py-3.5 pr-10 text-sm text-neutral-200 transition-all hover:border-neutral-600 focus:border-brand-500/50 focus:outline-none focus:ring-1 focus:ring-brand-500/30">
+                  <option value="pdf">PDF Document</option>
+                  <option value="image">Image (PNG / JPG)</option>
+                  <option value="word">Word (DOCX)</option>
+                </select>
+                <svg class="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </div>
+            </div>
+            <div class="hidden sm:flex sm:items-center sm:pb-3">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-700 bg-neutral-950">
+                <svg class="h-5 w-5 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </div>
+            </div>
+            <div class="flex-1">
+              <label class="mb-2 block text-xs font-semibold uppercase tracking-wider text-neutral-500">Output format</label>
+              <div class="relative">
+                <select id="output-format" class="w-full appearance-none rounded-xl border border-neutral-700 bg-neutral-950 px-4 py-3.5 pr-10 text-sm text-neutral-200 transition-all hover:border-neutral-600 focus:border-brand-500/50 focus:outline-none focus:ring-1 focus:ring-brand-500/30">
+                  <option value="xlsx">Excel (XLSX)</option>
+                  <option value="csv">CSV</option>
+                  <option value="json">JSON</option>
+                  <option value="xml">XML</option>
+                </select>
+                <svg class="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </div>
+            </div>
+            <a href="/upload" id="convert-btn" class="inline-flex shrink-0 items-center gap-2 rounded-xl bg-brand-500 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-brand-500/25 transition-all hover:bg-brand-600 hover:shadow-brand-500/35">
+              Convert Now
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-7xl px-6 py-24 reveal-on-scroll">
+      <div class="mx-auto max-w-3xl rounded-2xl border border-brand-500/30 bg-brand-500/[0.04] p-8 text-center shadow-2xl shadow-brand-500/10">
+        <span class="mb-4 inline-flex items-center gap-2 rounded-full bg-amber-500/10 px-3 py-1 text-xs font-semibold text-amber-400">Why we're different from Expensify</span>
+        <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">Expensify hides its uncertainty. We show it.</h2>
+        <p class="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-neutral-400">
+          Expensify's SmartScan claims 99% accuracy &mdash; but when it's wrong, you have to manually find every mistake.
+          PDF2DataAI shows you exactly how confident it is for <em>every field</em>, so you only review what needs attention.
+        </p>
+      </div>
+    </section>
+
+    <section id="features" class="mx-auto max-w-7xl px-6 py-24 reveal-on-scroll">
+      <div class="mb-16 text-center">
+        <span class="mb-6 inline-block text-xs font-semibold uppercase tracking-widest text-brand-400">Features</span>
+        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">The most transparent PDF data extraction tool</h2>
+        <p class="mt-4 text-lg text-neutral-400">Every field gets a confidence score. Low-confidence items go to review. No black boxes.</p>
+      </div>
+      <div class="animate-stagger grid gap-px overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-800 sm:grid-cols-2 lg:grid-cols-3">
+        {[
+          { title: "Confidence scoring", desc: "Every extracted field shows a 0&ndash;100% confidence score. No more guessing whether the AI got it right.", icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" },
+          { title: "Auto-flag below 90%", desc: "Fields below 90% confidence are automatically flagged for human review. Review just what needs attention.", icon: "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" },
+          { title: "Smart table detection", desc: "Automatically finds tables, merged cells, and nested layouts in invoices, reports, and forms.", icon: "M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" },
+          { title: "Multi-format export", desc: "Export to Excel, CSV, or JSON. Preserves formatting, column types, and data structure.", icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" },
+          { title: "OCR for scanned docs", desc: "Built-in OCR handles scanned PDFs and images. No pre-processing required.", icon: "M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" },
+          { title: "Automated receipt processing", desc: "Upload receipts and get structured data instantly. AI extracts merchant, date, amount, tax, and line items.", icon: "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" },
+        ].map((f) => (
+          <div class="group bg-neutral-950 p-8 transition-all hover-lift hover:bg-neutral-900/80">
+            <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-500/10 text-brand-400 ring-1 ring-brand-500/20 transition-all group-hover:bg-brand-500/15 group-hover:ring-brand-500/30">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={f.icon}/></svg>
+            </div>
+            <h3 class="mb-3 text-lg font-semibold">{f.title}</h3>
+            <p class="text-sm leading-relaxed text-neutral-400">{f.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section id="seo-content" class="mx-auto max-w-4xl px-6 py-24 reveal-on-scroll">
+      <div class="mb-12 text-center">
+        <span class="mb-6 inline-block text-xs font-semibold uppercase tracking-widest text-brand-400">About</span>
+        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">The Most Transparent PDF to Excel AI Converter</h2>
+      </div>
+
+      <div class="space-y-6 text-sm leading-relaxed text-neutral-300">
+        <p>
+          <strong>PDF2DataAI</strong> is an <strong>AI-powered PDF to Excel converter</strong> designed for professionals who need accurate, structured data from invoices, receipts, forms, and reports. Unlike traditional <strong>PDF data extraction</strong> tools that operate as a black box, PDF2DataAI brings complete transparency to <strong>automated receipt processing</strong> by showing a confidence score for every single field it extracts.
+        </p>
+
+        <p>
+          The core problem with existing tools like Expensify is that they claim high accuracy but give you no visibility into which fields are reliable and which might be wrong. When Expensify's SmartScan misreads an amount or misidentifies a merchant, you have to manually review every receipt to find the error. PDF2DataAI solves this by acting as an <strong>AI invoice extractor</strong> that flags low-confidence fields automatically. If the AI is less than 90% sure about a value, it highlights it for human review so you never trust incorrect data.
+        </p>
+
+        <h3 class="text-xl font-semibold text-neutral-100">How PDF to Excel AI Extraction Works</h3>
+        <p>
+          Our <strong>smart document scanner</strong> uses advanced OCR and machine learning models to analyze your document structure. It identifies tables, form fields, headers, line items, and metadata. For each piece of extracted data, the AI calculates a confidence score based on factors like image quality, text clarity, document type, and pattern matching against known formats.
+        </p>
+        <p>
+          For example, when processing an invoice, PDF2DataAI extracts the invoice number, date, vendor name, line items, subtotal, tax, and total &mdash; and assigns a separate confidence score to each. If the tax amount is blurry or in an unusual format, it might get 88% confidence and be flagged. You can then edit it directly, and once corrected, the confidence updates to 100%.
+        </p>
+
+        <h3 class="text-xl font-semibold text-neutral-100">Beyond Receipt Scanning</h3>
+        <p>
+          While most <strong>automated receipt processing</strong> tools are limited to simple expense receipts, PDF2DataAI handles a much wider range of documents. It works as a full <strong>PDF data extraction</strong> platform capable of processing multi-page invoices, purchase orders, bank statements, insurance forms, contracts, and complex table-heavy reports. The AI preserves column structure, data types, and formatting so your Excel output is clean and ready to use.
+        </p>
+        <p>
+          Batch processing lets you upload multiple PDFs at once, with consistent output schemas across all documents. The API access enables integration into existing workflows, while webhooks support real-time automation. For scanned documents, the built-in OCR engine ensures even image-based PDFs are processed accurately.
+        </p>
+
+        <h3 class="text-xl font-semibold text-neutral-100">Why Confidence Scores Matter</h3>
+        <p>
+          In traditional PDF to Excel conversion, you either trust the output blindly or manually verify every field. Both approaches are flawed. Confidence scoring bridges this gap by telling you exactly which fields need attention. The green (90-100%), amber (70-89%), and red (0-69%) system makes it visual and intuitive. Fields flagged for review appear in a centralized queue where you can approve, edit, or reject them in one click.
+        </p>
+        <p>
+          This approach is particularly valuable for finance teams processing hundreds of invoices monthly. Instead of reviewing every document line by line, you only check the flagged fields &mdash; typically 10-20% of total data. This cuts review time by up to 80% while maintaining or improving accuracy compared to fully manual processes.
+        </p>
+
+        <h3 class="text-xl font-semibold text-neutral-100">Export to Excel, CSV, or JSON</h3>
+        <p>
+          Once your data is extracted and reviewed, export it in your preferred format. Excel (.xlsx) preserves formatting and data types. CSV works best for large datasets and database imports. JSON is ideal for API integrations. All exports include the confidence scores so downstream systems can make their own reliability decisions.
+        </p>
+        <p>
+          PDF2DataAI is free for up to 10 pages per month with full confidence scoring and no sign-up required. Pro and Business plans offer higher limits, batch processing, API access, and priority support. Join thousands of teams who have switched from Expensify to get transparent, confidence-scored document extraction.
+        </p>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-7xl px-6 py-24 reveal-on-scroll">
+      <div class="mb-16 text-center">
+        <span class="mb-6 inline-block text-xs font-semibold uppercase tracking-widest text-brand-400">Confidence score</span>
+        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">See exactly what the AI knows</h2>
+        <p class="mt-4 text-lg text-neutral-400">No black box. Every field has a transparent confidence rating.</p>
+      </div>
+      <div class="mx-auto max-w-3xl overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-900/50">
+        <div class="border-b border-neutral-800 px-6 py-4">
+          <div class="flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-500/10 text-brand-400">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            </div>
+            <div>
+              <p class="text-sm font-medium">Invoice #INV-2024-0891.pdf</p>
+              <p class="text-xs text-neutral-500">Processed 2 minutes ago</p>
+            </div>
+            <div class="ml-auto flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-1">
+              <span class="h-2 w-2 rounded-full bg-emerald-500" />
+              <span class="text-xs font-medium text-emerald-400">Overall: 94%</span>
+            </div>
+          </div>
+        </div>
+        <div class="divide-y divide-neutral-800">
+          {[
+            { label: "Invoice number", value: "INV-2024-0891", score: 98, status: "high" },
+            { label: "Date", value: "2024-12-15", score: 99, status: "high" },
+            { label: "Vendor name", value: "CloudServe Technologies", score: 96, status: "high" },
+            { label: "Total amount", value: "$12,847.50", score: 97, status: "high" },
+            { label: "Tax amount", value: "$1,284.75", score: 88, status: "medium" },
+            { label: "Line items", value: "4 items extracted", score: 92, status: "high" },
+            { label: "Purchase order ref", value: "PO-2024-Q4-782", score: 71, status: "low" },
+          ].map((r) => {
+            const barColor = r.status === "high" ? "bg-emerald-500" : r.status === "medium" ? "bg-amber-500" : "bg-red-500";
+            const textColor = r.status === "high" ? "text-emerald-400" : r.status === "medium" ? "text-amber-400" : "text-red-400";
+            const bgColor = r.status === "high" ? "bg-emerald-500/10" : r.status === "medium" ? "bg-amber-500/10" : "bg-red-500/10";
+            return (
+              <div class="flex items-center gap-4 px-6 py-3.5 text-sm">
+                <span class="w-40 text-neutral-400">{r.label}</span>
+                <span class="flex-1 font-medium">{r.value}</span>
+                <div class="flex items-center gap-2">
+                  <div class={`h-2 w-16 overflow-hidden rounded-full ${bgColor}`}>
+                    <div class={`h-full rounded-full ${barColor} transition-all`} style={`width: ${r.score}%`} />
+                  </div>
+                  <span class={`w-10 text-right text-xs font-medium ${textColor}`}>{r.score}%</span>
+                </div>
+                {r.status === "low" && (
+                  <span class="inline-flex items-center gap-1 rounded-md bg-amber-500/10 px-2 py-0.5 text-xs font-medium text-amber-400">
+                    <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+                    Needs review
+                  </span>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-7xl px-6 py-24 reveal-on-scroll">
+      <div class="mb-16 text-center">
+        <span class="mb-6 inline-block text-xs font-semibold uppercase tracking-widest text-brand-400">Comparison</span>
+        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Expensify vs. PDF2DataAI</h2>
+        <p class="mt-4 text-lg text-neutral-400">The difference is transparency.</p>
+      </div>
+      <div class="mx-auto max-w-4xl overflow-hidden rounded-2xl border border-neutral-800">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-neutral-800 bg-neutral-900/50">
+              <th class="px-6 py-4 text-left font-medium text-neutral-400">Capability</th>
+              <th class="px-6 py-4 text-center font-medium text-neutral-500">Expensify</th>
+              <th class="px-6 py-4 text-center font-medium text-brand-400">PDF2DataAI</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-neutral-800">
+            {[
+              { feature: "Per-field confidence scoring", expensify: false, us: true },
+              { feature: "Auto-flag below 90%", expensify: false, us: true },
+              { feature: "Human review queue", expensify: true, us: true },
+              { feature: "Receipt scanning", expensify: true, us: true },
+              { feature: "Invoice extraction", expensify: true, us: true },
+              { feature: "Table & structured data", expensify: false, us: true },
+              { feature: "Export to Excel/CSV/JSON", expensify: true, us: true },
+              { feature: "Transparent pricing", expensify: false, us: true },
+              { feature: "No BYOC penalty", expensify: false, us: true },
+              { feature: "Free tier (no sign-up)", expensify: false, us: true },
+            ].map((row) => (
+              <tr class="transition-colors hover:bg-neutral-900/30">
+                <td class="px-6 py-3.5 font-medium">{row.feature}</td>
+                <td class="px-6 py-3.5 text-center">{row.expensify
+                  ? <svg class="mx-auto h-5 w-5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  : <svg class="mx-auto h-5 w-5 text-neutral-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                }</td>
+                <td class="px-6 py-3.5 text-center">
+                  <svg class="mx-auto h-5 w-5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-7xl px-6 py-24 text-center reveal-on-scroll">
+      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Ready to extract with confidence?</h2>
+      <p class="mx-auto mt-4 max-w-xl text-lg text-neutral-400">No more guessing. Know exactly what your AI got right &mdash; and what needs a second look.</p>
+      <a href="/upload" class="mt-8 inline-flex items-center gap-2 rounded-xl bg-neutral-100 px-8 py-4 text-base font-semibold text-neutral-950 shadow-2xl shadow-brand-500/25 transition-all hover:bg-neutral-200 hover:shadow-brand-500/35">
+        Upload your first document
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
+    </section>
+  </main>
+  <Footer />
 </Layout>
+
+<script>
+  (function () {
+    var convertBtn = document.getElementById('convert-btn');
+    var inputSelect = document.getElementById('input-format');
+    var outputSelect = document.getElementById('output-format');
+    if (convertBtn && inputSelect && outputSelect) {
+      convertBtn.addEventListener('click', function (e) {
+        try {
+          localStorage.setItem('pdf2dataai_input_format', inputSelect.value);
+          localStorage.setItem('pdf2dataai_output_format', outputSelect.value);
+        } catch (err) {
+          // localStorage unavailable
+        }
+      });
+    }
+  })();
+</script>

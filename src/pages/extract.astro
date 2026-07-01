@@ -1,0 +1,113 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Extraction Results — View AI-Extracted Data | PDF2DataAI" description="View AI-extracted fields with confidence scores. Approve, edit, or flag data for review. Export to Excel or CSV with one click.">
+  <Nav />
+  <main class="pt-24">
+    <div id="loading" class="mx-auto flex max-w-3xl items-center justify-center px-6 py-32">
+      <div class="flex flex-col items-center gap-4">
+        <svg class="h-8 w-8 animate-spin text-brand-400" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
+        <p class="text-neutral-400">Loading document...</p>
+      </div>
+    </div>
+
+    <div id="not-found" class="mx-auto hidden max-w-3xl px-6 py-32 text-center">
+      <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-neutral-800">
+        <svg class="h-8 w-8 text-neutral-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <h2 class="text-xl font-semibold">Document not found</h2>
+      <p class="mt-2 text-neutral-400">This document doesn&rsquo;t exist or has been deleted.</p>
+      <a href="/dashboard" class="mt-6 inline-flex items-center gap-2 rounded-xl bg-neutral-100 px-6 py-3 text-sm font-semibold text-neutral-950 transition-all hover:bg-neutral-200">
+        Back to dashboard
+      </a>
+    </div>
+
+    <div id="content" class="mx-auto hidden max-w-5xl px-6 py-8">
+      <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <a href="/dashboard" class="mb-2 inline-flex items-center gap-1.5 text-sm text-neutral-500 transition-colors hover:text-neutral-300">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            Back to documents
+          </a>
+          <h1 class="text-2xl font-bold tracking-tight" id="doc-title">Invoice</h1>
+          <p class="text-sm text-neutral-500" id="doc-meta"></p>
+        </div>
+        <div class="flex items-center gap-3">
+          <span id="overall-badge" class="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium"></span>
+          <button id="export-btn" class="inline-flex items-center gap-2 rounded-xl border border-neutral-800 px-4 py-2.5 text-sm font-medium text-neutral-300 transition-all hover:border-neutral-700 hover:text-neutral-100">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            Export
+          </button>
+        </div>
+      </div>
+
+      <div class="mb-8 grid gap-6 lg:grid-cols-3">
+        <div class="lg:col-span-2 space-y-6">
+          <div class="rounded-2xl border border-neutral-800 bg-neutral-900/30">
+            <div class="border-b border-neutral-800 px-6 py-4">
+              <div class="flex items-center justify-between">
+                <h2 class="text-sm font-semibold uppercase tracking-wider text-neutral-400">Extracted fields</h2>
+                <span class="text-xs text-neutral-500">Confidence score for each field</span>
+              </div>
+            </div>
+            <div id="fields-container" class="divide-y divide-neutral-800"></div>
+          </div>
+
+          <div class="rounded-2xl border border-neutral-800 bg-neutral-900/30">
+            <div class="border-b border-neutral-800 px-6 py-4">
+              <div class="flex items-center justify-between">
+                <h2 class="text-sm font-semibold uppercase tracking-wider text-neutral-400">Line items</h2>
+                <span id="table-confidence" class="text-xs font-medium"></span>
+              </div>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="border-b border-neutral-800 text-neutral-500">
+                    <th class="px-6 py-3 text-left font-medium">Description</th>
+                    <th class="px-6 py-3 text-right font-medium">Qty</th>
+                    <th class="px-6 py-3 text-right font-medium">Unit price</th>
+                    <th class="px-6 py-3 text-right font-medium">Total</th>
+                  </tr>
+                </thead>
+                <tbody id="line-items-body" class="divide-y divide-neutral-800"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <div class="rounded-2xl border border-neutral-800 bg-neutral-900/30 p-6">
+            <h3 class="mb-4 text-sm font-semibold uppercase tracking-wider text-neutral-400">Review needed</h3>
+            <div id="review-items" class="space-y-3">
+              <p class="text-sm text-neutral-500">No items need review.</p>
+            </div>
+          </div>
+
+          <div class="rounded-2xl border border-neutral-800 bg-neutral-900/30 p-6">
+            <h3 class="mb-4 text-sm font-semibold uppercase tracking-wider text-neutral-400">Raw OCR text</h3>
+            <pre id="raw-text" class="max-h-48 overflow-y-auto whitespace-pre-wrap rounded-lg bg-neutral-950 p-4 text-xs leading-relaxed text-neutral-500"></pre>
+          </div>
+
+          <div class="flex flex-col gap-3">
+            <button id="approve-btn" class="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-4 py-3 text-sm font-semibold text-white transition-all hover:bg-emerald-600">
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Approve all
+            </button>
+            <button id="delete-btn" class="inline-flex items-center justify-center gap-2 rounded-xl border border-neutral-800 px-4 py-3 text-sm font-medium text-neutral-500 transition-all hover:border-red-500/50 hover:text-red-400">
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+              Delete document
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer />
+
+  <script src="/src/scripts/store.js"></script>
+  <script src="/src/scripts/extract.js"></script>
+</Layout>
