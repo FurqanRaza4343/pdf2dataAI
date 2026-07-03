@@ -12,8 +12,8 @@
   var inputFormat = '';
   var outputFormat = '';
   try {
-    inputFormat = localStorage.getItem('pdf2dataai_input_format') || 'pdf';
-    outputFormat = localStorage.getItem('pdf2dataai_output_format') || 'xlsx';
+    inputFormat = localStorage.getItem('docdataentry_input_format') || 'pdf';
+    outputFormat = localStorage.getItem('docdataentry_output_format') || 'xlsx';
   } catch (err) {}
   if (formatBadge) {
     var formatMap = { pdf: 'PDF', image: 'Image', word: 'Word' };
@@ -50,7 +50,7 @@
         progressBar.style.width = '100%';
         progressText.textContent = 'Extraction complete! Redirecting...';
         setTimeout(function () {
-          window.PDF2DataAI.extractWithAI(file, inputFormat, outputFormat).then(function (doc) {
+          window.DocDataEntry.extractWithAI(file, inputFormat, outputFormat).then(function (doc) {
             if (doc && doc.id) {
               window.location.href = '/extract/?id=' + doc.id;
             } else {

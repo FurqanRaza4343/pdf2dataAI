@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://pdf2dataai.com',
+  site: 'https://docdataentry.com',
   vite: {
     plugins: [tailwindcss()],
   },

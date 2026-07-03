@@ -48,7 +48,7 @@ export default async function (req: Request): Promise<Response> {
         'Authorization': 'Bearer ' + MISTRAL_API_KEY,
       },
       body: JSON.stringify({
-        model: 'mistral-large-latest',
+        model: 'mistral-small-latest',
         response_format: { type: 'json_object' },
         messages: [
           {

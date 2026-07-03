@@ -4,7 +4,7 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="How It Works — AI PDF Data Extraction in 4 Steps | PDF2DataAI" description="Learn how PDF2DataAI extracts document data in 4 steps — upload, AI extraction, confidence scoring, and export to Excel or CSV.">
+<Layout title="How It Works — AI Document Data Entry in 4 Steps | DocDataEntry" description="Learn how DocDataEntry extracts document data in 4 steps — upload, AI extraction, confidence scoring, and export to Excel or CSV." canonical="https://docdataentry.com/how-it-works" breadcrumbs={[{name:"Home",url:"https://docdataentry.com"},{name:"How It Works",url:"https://docdataentry.com/how-it-works"}]}>
   <Nav />
   <main class="pt-24">
     <section class="mx-auto max-w-7xl px-6 py-20 text-center">
@@ -42,15 +42,15 @@ import Footer from '../components/Footer.astro';
             { color: "bg-amber-500", bg: "bg-amber-500/10", text: "text-amber-400", range: "70&ndash;89%", label: "Medium confidence", desc: "Flagged for review. Verify before using." },
             { color: "bg-red-500", bg: "bg-red-500/10", text: "text-red-400", range: "0&ndash;69%", label: "Low confidence", desc: "AI is uncertain. Manual entry recommended." },
           ].map((item) => (
-            <div class={`flex items-center gap-4 rounded-xl ${item.bg} p-4`}>
-              <span class={`h-8 w-8 shrink-0 rounded-full ${item.color}`} />
-              <div class="flex-1">
+            <div class={`flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 rounded-xl ${item.bg} p-4`}>
+              <div class="flex items-center gap-3 sm:gap-4">
+                <span class={`h-8 w-8 shrink-0 rounded-full ${item.color}`} />
                 <div class="flex items-center gap-3">
                   <span class="font-semibold">{item.label}</span>
                   <span class={`text-xs font-medium ${item.text}`}>{item.range}</span>
                 </div>
-                <p class="text-sm text-neutral-400">{item.desc}</p>
               </div>
+              <p class="text-sm text-neutral-400 sm:ml-12">{item.desc}</p>
             </div>
           ))}
         </div>

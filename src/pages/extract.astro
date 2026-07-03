@@ -4,7 +4,7 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Extraction Results — View AI-Extracted Data | PDF2DataAI" description="View AI-extracted fields with confidence scores. Approve, edit, or flag data for review. Export to Excel or CSV with one click.">
+<Layout title="Extraction Results — View AI-Extracted Data | DocDataEntry" description="View AI-extracted fields with confidence scores. Approve, edit, or flag data for review. Export to Excel or CSV with one click." canonical="https://docdataentry.com/extract" breadcrumbs={[{name:"Home",url:"https://docdataentry.com"},{name:"Extract",url:"https://docdataentry.com/extract"}]}>
   <Nav />
   <main class="pt-24">
     <div id="loading" class="mx-auto flex max-w-3xl items-center justify-center px-6 py-32">
@@ -93,11 +93,11 @@ import Footer from '../components/Footer.astro';
           </div>
 
           <div class="flex flex-col gap-3">
-            <button id="approve-btn" class="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-4 py-3 text-sm font-semibold text-white transition-all hover:bg-emerald-600">
+            <button id="approve-btn" class="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-500 px-4 py-3.5 text-sm font-semibold text-white transition-all hover:bg-emerald-600">
               <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
               Approve all
             </button>
-            <button id="delete-btn" class="inline-flex items-center justify-center gap-2 rounded-xl border border-neutral-800 px-4 py-3 text-sm font-medium text-neutral-500 transition-all hover:border-red-500/50 hover:text-red-400">
+            <button id="delete-btn" class="inline-flex items-center justify-center gap-2 rounded-xl border border-neutral-800 px-4 py-3.5 text-sm font-medium text-neutral-500 transition-all hover:border-red-500/50 hover:text-red-400">
               <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
               Delete document
             </button>

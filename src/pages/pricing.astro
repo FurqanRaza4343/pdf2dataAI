@@ -4,7 +4,7 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Pricing — AI PDF to Excel Converter Plans | PDF2DataAI" description="Simple transparent pricing for AI PDF data extraction. Free tier with 10 pages/mo. Pro ($19) and Business ($49) plans available. No hidden fees.">
+<Layout title="Pricing — AI Document Data Entry Plans | DocDataEntry" description="Simple transparent pricing for AI document data entry. Free tier with 10 docs/mo. Pro ($19) and Business ($49) plans available. No hidden fees." canonical="https://docdataentry.com/pricing" breadcrumbs={[{name:"Home",url:"https://docdataentry.com"},{name:"Pricing",url:"https://docdataentry.com/pricing"}]}>
   <Nav />
   <main class="pt-24">
     <section class="mx-auto max-w-7xl px-6 py-20 text-center">
@@ -12,7 +12,7 @@ import Footer from '../components/Footer.astro';
       <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">Simple, transparent pricing</h1>
       <p class="mt-4 text-lg text-neutral-400">No hidden fees. No surprise charges. Pay only for what you need.</p>
 
-      <div class="mx-auto mt-16 grid max-w-5xl gap-6 md:grid-cols-3">
+      <div class="mx-auto mt-16 grid max-w-5xl gap-6 sm:grid-cols-2 md:grid-cols-3">
         {[
           {
             name: "Free",
@@ -66,13 +66,13 @@ import Footer from '../components/Footer.astro';
     <section class="mx-auto max-w-3xl px-6 py-20">
       <div class="rounded-2xl border border-neutral-800 bg-neutral-900/30 p-8">
         <h2 class="text-xl font-bold text-center mb-8">Compare with Expensify</h2>
-        <div class="overflow-hidden rounded-xl border border-neutral-800">
+        <div class="overflow-x-auto rounded-xl border border-neutral-800">
           <table class="w-full text-sm">
             <thead>
               <tr class="border-b border-neutral-800 bg-neutral-900/50">
                 <th class="px-5 py-3 text-left font-medium text-neutral-400">Plan</th>
                 <th class="px-5 py-3 text-center font-medium text-neutral-500">Expensify</th>
-                <th class="px-5 py-3 text-center font-medium text-brand-400">PDF2DataAI</th>
+                <th class="px-5 py-3 text-center font-medium text-brand-400">DocDataEntry</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-neutral-800">

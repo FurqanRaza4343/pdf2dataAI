@@ -6,7 +6,7 @@
   var content = document.getElementById('content');
 
   function loadDocument() {
-    var doc = window.PDF2DataAI.getLocalDocuments().find(function (d) { return d.id === docId; });
+    var doc = window.DocDataEntry.getLocalDocuments().find(function (d) { return d.id === docId; });
     if (!doc) {
       if (loading) loading.classList.add('hidden');
       if (notFound) notFound.classList.remove('hidden');
@@ -21,7 +21,7 @@
     if (deleteBtn) {
       deleteBtn.addEventListener('click', function () {
         if (confirm('Delete this document permanently?')) {
-          window.PDF2DataAI.deleteLocalDocument(docId);
+          window.DocDataEntry.deleteLocalDocument(docId);
           window.location.href = '/dashboard';
         }
       });
@@ -57,7 +57,7 @@
         doc.fields = doc.fields.map(function (f) {
           return { key: f.key, label: f.label, value: f.value, confidence: Math.min(100, f.confidence + 5) };
         });
-        window.PDF2DataAI.saveLocalDocument(doc);
+          window.DocDataEntry.saveLocalDocument(doc);
         renderDocument(doc);
       });
     }
@@ -111,13 +111,13 @@
           ? '<span class="inline-flex items-center gap-1 rounded bg-amber-500/10 px-1.5 py-0.5 text-xs font-medium text-amber-400"><svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg> Flagged</span>'
           : '';
 
-        return '<div class="flex items-center gap-4 px-6 py-4 ' + rowBg + '">' +
-          '<div class="w-36 shrink-0"><p class="text-sm text-neutral-400">' + f.label + '</p></div>' +
+        return '<div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 px-4 sm:px-6 py-4 ' + rowBg + '">' +
+          '<div class="sm:w-36 sm:shrink-0"><p class="text-sm text-neutral-400">' + f.label + '</p></div>' +
           '<div class="flex-1">' +
             '<p class="text-sm font-medium" data-key="' + f.key + '">' + f.value + '</p>' +
             editHtml +
           '</div>' +
-          '<div class="flex items-center gap-3 shrink-0">' +
+          '<div class="flex items-center gap-3">' +
             '<div class="h-1.5 w-20 overflow-hidden rounded-full ' + barBg + '">' +
               '<div class="h-full rounded-full ' + barColor + '" style="width:' + f.confidence + '%"></div>' +
             '</div>' +
@@ -206,7 +206,7 @@
             }
             return f;
           });
-          window.PDF2DataAI.saveLocalDocument(doc);
+        window.DocDataEntry.saveLocalDocument(doc);
           renderDocument(doc);
         }
       });

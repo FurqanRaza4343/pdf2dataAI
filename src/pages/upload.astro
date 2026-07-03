@@ -4,7 +4,7 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Upload PDF — Free AI PDF to Excel Converter | PDF2DataAI" description="Upload your PDF, image, or scanned document for AI-powered data extraction with per-field confidence scoring. Supports PDF, PNG, JPG.">
+<Layout title="Upload Document — Free AI Document Data Entry | DocDataEntry" description="Upload your PDF, image, or document for AI-powered data extraction with per-field confidence scoring. Supports PDF, PNG, JPG, DOCX." canonical="https://docdataentry.com/upload" breadcrumbs={[{name:"Home",url:"https://docdataentry.com"},{name:"Upload",url:"https://docdataentry.com/upload"}]}>
   <Nav />
   <main class="pt-24">
     <div class="mx-auto max-w-3xl px-6 py-16">
@@ -14,7 +14,7 @@ import Footer from '../components/Footer.astro';
         <div id="format-badge" class="mt-4 inline-flex items-center gap-2 rounded-full border border-brand-500/20 bg-brand-500/5 px-4 py-1.5 text-sm text-brand-300 opacity-0 transition-opacity"></div>
       </div>
 
-      <div id="drop-zone" class="relative cursor-pointer rounded-2xl border-2 border-dashed border-neutral-700 bg-neutral-900/30 p-16 text-center transition-all hover:border-brand-500/50 hover:bg-brand-500/[0.02]">
+      <div id="drop-zone" class="relative cursor-pointer rounded-2xl border-2 border-dashed border-neutral-700 bg-neutral-900/30 p-8 sm:p-16 text-center transition-all hover:border-brand-500/50 hover:bg-brand-500/[0.02]">
         <input type="file" id="file-input" accept=".pdf,.png,.jpg,.jpeg,.tiff" class="absolute inset-0 cursor-pointer opacity-0" />
         <div id="upload-prompt" class="flex flex-col items-center gap-4">
           <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-500/10 text-brand-400">
@@ -28,7 +28,7 @@ import Footer from '../components/Footer.astro';
             <svg class="h-8 w-8 animate-spin text-brand-400" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
           </div>
           <p class="text-lg font-medium" id="progress-text">Analyzing document...</p>
-          <div class="h-2 w-64 overflow-hidden rounded-full bg-neutral-800">
+          <div class="h-2 w-full max-w-xs overflow-hidden rounded-full bg-neutral-800">
             <div id="progress-bar" class="h-full w-0 rounded-full bg-brand-500 transition-all duration-500" />
           </div>
         </div>

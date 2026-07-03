@@ -5,8 +5,8 @@ const { transparent = false } = Astro.props;
 <nav class="fixed top-0 left-0 right-0 z-50 border-b backdrop-blur-xl transition-colors border-neutral-800/50">
   <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
     <a href="/" class="flex items-center gap-2.5 text-lg font-semibold tracking-tight">
-      <img src="/icon.png" alt="PDF2DataAI" class="h-8 w-8 rounded-lg shadow-lg shadow-brand-500/25" />
-      PDF2DataAI
+      <img src="/icon.png" alt="DocDataEntry" class="h-8 w-8 rounded-lg shadow-lg shadow-brand-500/25" />
+      DocDataEntry
     </a>
     <div class="hidden items-center gap-8 text-sm font-medium text-neutral-400 sm:flex">
       <a href="/#features" class="transition-colors hover:text-neutral-100">Features</a>
@@ -16,7 +16,24 @@ const { transparent = false } = Astro.props;
       <a href="/dashboard" class="transition-colors hover:text-neutral-100">Dashboard</a>
     </div>
     <div class="flex items-center gap-3">
-      <a href="/upload" class="rounded-lg bg-brand-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-500/25 transition-all hover:bg-brand-600">Upload document</a>
+      <a href="/upload" class="hidden sm:inline-flex rounded-lg bg-brand-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-500/25 transition-all hover:bg-brand-600">Upload document</a>
+      <button id="mobile-menu-btn" class="inline-flex sm:hidden items-center justify-center rounded-lg p-2 text-neutral-400 hover:text-neutral-100">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="hidden border-t border-neutral-800 bg-neutral-950/95 backdrop-blur-xl sm:hidden">
+    <div class="flex flex-col space-y-1 px-6 py-4">
+      <a href="/#features" class="rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-400 transition-colors hover:text-neutral-100">Features</a>
+      <a href="/how-it-works" class="rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-400 transition-colors hover:text-neutral-100">How it works</a>
+      <a href="/pricing" class="rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-400 transition-colors hover:text-neutral-100">Pricing</a>
+      <a href="/blog" class="rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-400 transition-colors hover:text-neutral-100">Blog</a>
+      <a href="/dashboard" class="rounded-lg px-3 py-2.5 text-sm font-medium text-neutral-400 transition-colors hover:text-neutral-100">Dashboard</a>
+      <a href="/upload" class="mt-2 rounded-lg bg-brand-500 px-3 py-3 text-center text-sm font-semibold text-white transition-all hover:bg-brand-600">Upload document</a>
     </div>
   </div>
 </nav>
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){var b=document.getElementById('mobile-menu-btn'),m=document.getElementById('mobile-menu');b&&m&&b.addEventListener('click',function(){m.classList.toggle('hidden')})});
+</script>

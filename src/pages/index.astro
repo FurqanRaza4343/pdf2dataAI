@@ -6,11 +6,11 @@ import Footer from '../components/Footer.astro';
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "PDF2DataAI - PDF to Excel AI Converter",
-  "url": "https://pdf2dataai.com",
+  "name": "DocDataEntry - AI Document Data Entry",
+  "url": "https://docdataentry.com",
   "applicationCategory": "Document Processing",
   "operatingSystem": "Web",
-  "description": "Free AI-powered PDF to Excel converter with confidence scoring. Extract tables, invoices, receipts and forms automatically.",
+  "description": "Free AI-powered document data entry tool with confidence scoring. Extract invoices, receipts, forms and tables automatically.",
   "offers": {
     "@type": "Offer",
     "price": "0",
@@ -24,57 +24,73 @@ const faqSchema = {
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "How does AI convert PDF to Excel?",
+      "name": "What is intelligent document processing?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "PDF2DataAI uses advanced OCR and machine learning to scan your PDF, identify tables, text fields, and form structures, then extracts them into structured Excel data. Each field gets a confidence score so you know exactly how reliable the extraction is."
+        "text": "Intelligent document processing (IDP) uses AI, machine learning, and OCR to automatically extract, classify, and process data from documents. Unlike basic OCR, IDP understands document structure and identifies data relationships. DocDataEntry adds transparent confidence scoring to every field it extracts."
       }
     },
     {
       "@type": "Question",
-      "name": "Can AI accurately extract data from PDFs?",
+      "name": "What is a word processing document?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Modern AI extraction achieves 90-99% accuracy on clean documents. PDF2DataAI takes transparency further by showing a confidence score for every extracted field. Fields below 90% confidence are automatically flagged for human review, ensuring you never trust incorrect data."
+        "text": "A word processing document is a file created with software like Microsoft Word or Google Docs, commonly in DOCX or DOC format. These documents contain formatted text, tables, and images. DocDataEntry can extract data from word processing documents along with PDFs and images for versatile document processing."
       }
     },
     {
       "@type": "Question",
-      "name": "What is the best AI tool for PDF data extraction?",
+      "name": "What are document processes?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The best tool depends on your needs. PDF2DataAI stands out because it combines AI-powered extraction with transparent confidence scoring per field, support for invoices, receipts, forms and tables, batch processing, OCR for scanned documents, and multi-format export to Excel, CSV, and JSON."
+        "text": "Document processes are the workflows for handling documents: capture, classify, extract, validate, and export. DocDataEntry automates all these steps with AI, cutting manual data entry time by up to 80% while the confidence scoring system validates extracted data automatically."
       }
     },
     {
       "@type": "Question",
-      "name": "How to convert PDF to Excel using AI for free?",
+      "name": "What is a document analyzer AI?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Simply upload your PDF to PDF2DataAI's free tier. The AI automatically detects tables and data fields, extracts them, and lets you download the results as Excel (.xlsx) or CSV. The free plan covers up to 10 pages per month with full confidence scoring."
+        "text": "A document analyzer AI reads, understands, and extracts data from documents automatically using computer vision and natural language processing. DocDataEntry's analyzer processes invoices, receipts, forms, and reports, assigning a confidence score to every field for full transparency."
       }
     },
     {
       "@type": "Question",
-      "name": "Is AI PDF extraction better than traditional OCR?",
+      "name": "How does free AI document analysis work?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Traditional OCR only converts images to text. AI extraction understands document structure, identifies tables, separates headers from data, recognizes form fields, and can handle complex layouts. PDF2DataAI combines OCR with AI to deliver structured data rather than raw text."
+        "text": "Upload your document to DocDataEntry's free tier (up to 10 docs/month). The AI automatically extracts structured data with confidence scores for every field. Fields below 90% confidence are flagged for your review. No sign-up required. Results export to Excel, CSV, or JSON."
       }
     },
     {
       "@type": "Question",
-      "name": "How to extract table data from PDF using AI?",
+      "name": "Can I use a document analyzer online for free?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "PDF2DataAI automatically detects tables in your PDF, including merged cells, nested layouts, and multi-page tables. The AI preserves column structure, data types, and formatting, then exports to Excel with proper cell mapping. No manual setup or template creation needed."
+        "text": "Yes. DocDataEntry offers a free document analyzer at no cost. Upload PDFs, images, or Word documents, get AI extraction with confidence scores, and export results. The free tier covers 10 documents per month with full features, no credit card required."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is AI document processing better than manual data entry?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI document processing is significantly faster and more accurate than manual data entry. A human might process 10-20 invoices per hour with 1-3% error rate. AI can process hundreds per minute with 90-99% accuracy on clean documents. DocDataEntry's confidence scoring makes AI even more reliable by flagging uncertain fields."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does confidence scoring work in document extraction?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Each extracted field gets a 0-100% confidence score based on AI model certainty. Green (90-100%) means high confidence, amber (70-89%) needs review, red (0-69%) likely incorrect. Fields below 90% are auto-flagged. This system lets you trust high-confidence data while focusing review on uncertain fields."
       }
     }
   ]
 };
 ---
 
-<Layout title="PDF to Excel AI — Free AI Document Extraction with Confidence Scoring" description="Convert PDFs to Excel with AI-powered confidence scoring. Extract tables, invoices, and receipts with per-field accuracy scores. Free tier available. Try now.">
+<Layout title="DocDataEntry — AI Document Data Entry with Confidence Scoring" description="Free AI-powered document data entry tool. Extract invoices, receipts, and forms with per-field confidence scores. Smart document processing for accountants. Try now.">
   <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
@@ -85,18 +101,18 @@ const faqSchema = {
     <section class="relative z-10 mx-auto max-w-7xl px-6 pt-32 pb-24 text-center">
       <div class="mb-8 inline-flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-900/60 px-4 py-1.5 text-sm text-neutral-400 backdrop-blur-sm animate-fade-in">
         <span class="h-2 w-2 rounded-full bg-emerald-500 shadow-sm shadow-emerald-500/50" />
-        AI-powered PDF to Excel conversion
+        AI-powered intelligent document processing
       </div>
-      <h1 class="mx-auto max-w-5xl text-5xl font-extrabold leading-[1.08] tracking-tight sm:text-6xl lg:text-7xl animate-fade-up">
-        PDF to Excel AI &mdash; Extract Data<br />
+      <h1 class="mx-auto max-w-5xl text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl lg:text-7xl animate-fade-up">
+        AI Document Data Entry &mdash; Extract<br />
         <span class="bg-gradient-to-r from-brand-300 via-brand-400 to-brand-500 bg-clip-text text-transparent">with Per-Field Confidence Scoring</span>
       </h1>
       <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-neutral-400 animate-fade-up animate-delay-100">
-        Upload invoices, receipts, forms, or any PDF. Our <strong>AI invoice extractor</strong> and <strong>smart document scanner</strong> extracts structured data and assigns a confidence score to <em>every field</em>. Fields below 90% are automatically flagged for human review.
+        Upload invoices, receipts, forms, or any document. Our <strong>intelligent document processing</strong> engine extracts structured data and assigns a confidence score to <em>every field</em>. Fields below 90% are automatically flagged for human review.
       </p>
       <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row animate-fade-up animate-delay-200">
         <a href="/upload" class="inline-flex items-center gap-2 rounded-xl bg-neutral-100 px-8 py-4 text-base font-semibold text-neutral-950 shadow-2xl shadow-brand-500/25 transition-all hover:bg-neutral-200 hover:shadow-brand-500/35">
-          Upload your first PDF
+          Upload your first document
           <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
         </a>
         <a href="/how-it-works" class="inline-flex items-center gap-2 rounded-xl border border-neutral-800 px-8 py-4 text-base font-semibold text-neutral-300 transition-all hover:border-neutral-700 hover:text-neutral-100">
@@ -165,7 +181,7 @@ const faqSchema = {
         <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">Expensify hides its uncertainty. We show it.</h2>
         <p class="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-neutral-400">
           Expensify's SmartScan claims 99% accuracy &mdash; but when it's wrong, you have to manually find every mistake.
-          PDF2DataAI shows you exactly how confident it is for <em>every field</em>, so you only review what needs attention.
+          DocDataEntry shows you exactly how confident it is for <em>every field</em>, so you only review what needs attention.
         </p>
       </div>
     </section>
@@ -173,10 +189,10 @@ const faqSchema = {
     <section id="features" class="mx-auto max-w-7xl px-6 py-24 reveal-on-scroll">
       <div class="mb-16 text-center">
         <span class="mb-6 inline-block text-xs font-semibold uppercase tracking-widest text-brand-400">Features</span>
-        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">The most transparent PDF data extraction tool</h2>
+        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">The most transparent document data entry tool</h2>
         <p class="mt-4 text-lg text-neutral-400">Every field gets a confidence score. Low-confidence items go to review. No black boxes.</p>
       </div>
-      <div class="animate-stagger grid gap-px overflow-hidden rounded-2xl border border-neutral-800 bg-neutral-800 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="animate-stagger grid gap-px overflow-x-auto rounded-2xl border border-neutral-800 bg-neutral-800 sm:grid-cols-2 lg:grid-cols-3">
         {[
           { title: "Confidence scoring", desc: "Every extracted field shows a 0&ndash;100% confidence score. No more guessing whether the AI got it right.", icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" },
           { title: "Auto-flag below 90%", desc: "Fields below 90% confidence are automatically flagged for human review. Review just what needs attention.", icon: "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" },
@@ -199,37 +215,45 @@ const faqSchema = {
     <section id="seo-content" class="mx-auto max-w-4xl px-6 py-24 reveal-on-scroll">
       <div class="mb-12 text-center">
         <span class="mb-6 inline-block text-xs font-semibold uppercase tracking-widest text-brand-400">About</span>
-        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">The Most Transparent PDF to Excel AI Converter</h2>
+        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Intelligent Document Processing with Confidence Scoring</h2>
       </div>
 
       <div class="space-y-6 text-sm leading-relaxed text-neutral-300">
         <p>
-          <strong>PDF2DataAI</strong> is an <strong>AI-powered PDF to Excel converter</strong> designed for professionals who need accurate, structured data from invoices, receipts, forms, and reports. Unlike traditional <strong>PDF data extraction</strong> tools that operate as a black box, PDF2DataAI brings complete transparency to <strong>automated receipt processing</strong> by showing a confidence score for every single field it extracts.
+          <strong>DocDataEntry</strong> is an <strong>intelligent document processing platform</strong> designed for professionals who need accurate, structured data from invoices, receipts, forms, and reports. Unlike traditional <strong>document processing</strong> tools that operate as a black box, DocDataEntry brings complete transparency to <strong>automated document processing</strong> by showing a confidence score for every single field it extracts. Our <strong>AI document processing</strong> engine uses advanced machine learning to understand document structure and extract data with high accuracy.
         </p>
 
         <p>
-          The core problem with existing tools like Expensify is that they claim high accuracy but give you no visibility into which fields are reliable and which might be wrong. When Expensify's SmartScan misreads an amount or misidentifies a merchant, you have to manually review every receipt to find the error. PDF2DataAI solves this by acting as an <strong>AI invoice extractor</strong> that flags low-confidence fields automatically. If the AI is less than 90% sure about a value, it highlights it for human review so you never trust incorrect data.
+          The core problem with existing tools like Expensify is that they claim high accuracy but give you no visibility into which fields are reliable and which might be wrong. When Expensify's SmartScan misreads an amount or misidentifies a merchant, you have to manually review every receipt to find the error. DocDataEntry solves this by acting as an <strong>AI document analyzer</strong> that flags low-confidence fields automatically. If the AI is less than 90% sure about a value, it highlights it for human review so you never trust incorrect data.
         </p>
 
-        <h3 class="text-xl font-semibold text-neutral-100">How PDF to Excel AI Extraction Works</h3>
+        <h3 class="text-xl font-semibold text-neutral-100">How Intelligent Document Processing Works</h3>
         <p>
-          Our <strong>smart document scanner</strong> uses advanced OCR and machine learning models to analyze your document structure. It identifies tables, form fields, headers, line items, and metadata. For each piece of extracted data, the AI calculates a confidence score based on factors like image quality, text clarity, document type, and pattern matching against known formats.
+          Our <strong>document analyzer AI</strong> uses advanced OCR and machine learning models to analyze your document structure. It identifies tables, form fields, headers, line items, and metadata. For each piece of extracted data, the AI calculates a confidence score based on factors like image quality, text clarity, document type, and pattern matching against known formats. This <strong>free AI document analysis</strong> gives you complete visibility into the extraction quality.
         </p>
         <p>
-          For example, when processing an invoice, PDF2DataAI extracts the invoice number, date, vendor name, line items, subtotal, tax, and total &mdash; and assigns a separate confidence score to each. If the tax amount is blurry or in an unusual format, it might get 88% confidence and be flagged. You can then edit it directly, and once corrected, the confidence updates to 100%.
-        </p>
-
-        <h3 class="text-xl font-semibold text-neutral-100">Beyond Receipt Scanning</h3>
-        <p>
-          While most <strong>automated receipt processing</strong> tools are limited to simple expense receipts, PDF2DataAI handles a much wider range of documents. It works as a full <strong>PDF data extraction</strong> platform capable of processing multi-page invoices, purchase orders, bank statements, insurance forms, contracts, and complex table-heavy reports. The AI preserves column structure, data types, and formatting so your Excel output is clean and ready to use.
-        </p>
-        <p>
-          Batch processing lets you upload multiple PDFs at once, with consistent output schemas across all documents. The API access enables integration into existing workflows, while webhooks support real-time automation. For scanned documents, the built-in OCR engine ensures even image-based PDFs are processed accurately.
+          For example, when processing an invoice, DocDataEntry extracts the invoice number, date, vendor name, line items, subtotal, tax, and total &mdash; and assigns a separate confidence score to each. If the tax amount is blurry or in an unusual format, it might get 88% confidence and be flagged. You can then edit it directly, and once corrected, the confidence updates to 100%. Our <strong>document analyzer online free</strong> tool makes it accessible to everyone.
         </p>
 
-        <h3 class="text-xl font-semibold text-neutral-100">Why Confidence Scores Matter</h3>
+        <h3 class="text-xl font-semibold text-neutral-100">What Is Intelligent Document Processing?</h3>
         <p>
-          In traditional PDF to Excel conversion, you either trust the output blindly or manually verify every field. Both approaches are flawed. Confidence scoring bridges this gap by telling you exactly which fields need attention. The green (90-100%), amber (70-89%), and red (0-69%) system makes it visual and intuitive. Fields flagged for review appear in a centralized queue where you can approve, edit, or reject them in one click.
+          <strong>Intelligent document processing (IDP)</strong> is a technology that uses AI, machine learning, and OCR to automatically extract, classify, and process data from documents. Unlike basic OCR which simply converts images to text, <strong>intelligent document processing software</strong> understands document structure, identifies data relationships, and organizes information into usable formats. <strong>What are document processes?</strong> They are the workflows involved in handling documents from receipt to data extraction to storage &mdash; and IDP automates this entirely.
+        </p>
+        <p>
+          A <strong>word processing document</strong> is a type of document created with word processors like Microsoft Word. DocDataEntry can extract data from DOCX files as well as PDFs and images, making it a versatile <strong>intelligent document processing platform</strong> for any business need.
+        </p>
+
+        <h3 class="text-xl font-semibold text-neutral-100">Beyond Basic Document Analysis</h3>
+        <p>
+          While most <strong>automated document processing</strong> tools are limited to simple receipt scanning, DocDataEntry handles a much wider range of documents. It works as a full <strong>document processing</strong> platform capable of processing multi-page invoices, purchase orders, bank statements, insurance forms, contracts, and complex table-heavy reports. The AI preserves column structure, data types, and formatting so your Excel output is clean and ready to use.
+        </p>
+        <p>
+          Batch processing lets you upload multiple documents at once, with consistent output schemas across all files. The API access enables integration into existing workflows, while webhooks support real-time automation. For scanned documents, the built-in OCR engine ensures even image-based documents are processed accurately. Use our <strong>document analyzer online free</strong> for quick single documents, or subscribe for batch processing power.
+        </p>
+
+        <h3 class="text-xl font-semibold text-neutral-100">Why Confidence Scores Matter in Document Processing</h3>
+        <p>
+          In traditional document data entry, you either trust the output blindly or manually verify every field. Both approaches are flawed. Confidence scoring bridges this gap by telling you exactly which fields need attention. The green (90-100%), amber (70-89%), and red (0-69%) system makes it visual and intuitive. Fields flagged for review appear in a centralized queue where you can approve, edit, or reject them in one click.
         </p>
         <p>
           This approach is particularly valuable for finance teams processing hundreds of invoices monthly. Instead of reviewing every document line by line, you only check the flagged fields &mdash; typically 10-20% of total data. This cuts review time by up to 80% while maintaining or improving accuracy compared to fully manual processes.
@@ -240,7 +264,7 @@ const faqSchema = {
           Once your data is extracted and reviewed, export it in your preferred format. Excel (.xlsx) preserves formatting and data types. CSV works best for large datasets and database imports. JSON is ideal for API integrations. All exports include the confidence scores so downstream systems can make their own reliability decisions.
         </p>
         <p>
-          PDF2DataAI is free for up to 10 pages per month with full confidence scoring and no sign-up required. Pro and Business plans offer higher limits, batch processing, API access, and priority support. Join thousands of teams who have switched from Expensify to get transparent, confidence-scored document extraction.
+          DocDataEntry is free for up to 10 documents per month with full confidence scoring and no sign-up required. Pro and Business plans offer higher limits, batch processing, API access, and priority support. Join thousands of teams who have switched from Expensify to get transparent, confidence-scored document processing.
         </p>
       </div>
     </section>
@@ -306,16 +330,16 @@ const faqSchema = {
     <section class="mx-auto max-w-7xl px-6 py-24 reveal-on-scroll">
       <div class="mb-16 text-center">
         <span class="mb-6 inline-block text-xs font-semibold uppercase tracking-widest text-brand-400">Comparison</span>
-        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Expensify vs. PDF2DataAI</h2>
+        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Expensify vs. DocDataEntry</h2>
         <p class="mt-4 text-lg text-neutral-400">The difference is transparency.</p>
       </div>
-      <div class="mx-auto max-w-4xl overflow-hidden rounded-2xl border border-neutral-800">
+      <div class="mx-auto max-w-4xl overflow-x-auto rounded-2xl border border-neutral-800">
         <table class="w-full text-sm">
           <thead>
             <tr class="border-b border-neutral-800 bg-neutral-900/50">
               <th class="px-6 py-4 text-left font-medium text-neutral-400">Capability</th>
               <th class="px-6 py-4 text-center font-medium text-neutral-500">Expensify</th>
-              <th class="px-6 py-4 text-center font-medium text-brand-400">PDF2DataAI</th>
+              <th class="px-6 py-4 text-center font-medium text-brand-400">DocDataEntry</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-neutral-800">
@@ -347,8 +371,34 @@ const faqSchema = {
       </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section id="faq" class="mx-auto max-w-4xl px-6 py-24 reveal-on-scroll">
+      <div class="mb-16 text-center">
+        <span class="mb-6 inline-block text-xs font-semibold uppercase tracking-widest text-brand-400">FAQ</span>
+        <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Frequently Asked Questions</h2>
+        <p class="mt-4 text-lg text-neutral-400">Everything you need to know about intelligent document processing.</p>
+      </div>
+      <div class="space-y-4">{[{q:"What is intelligent document processing?",a:"Intelligent document processing (IDP) is a technology that uses AI, machine learning, and OCR to automatically extract, classify, and process data from documents like invoices, receipts, forms, and reports. Unlike basic OCR which only converts images to text, IDP understands document structure, identifies relationships between data fields, and organizes information into usable formats like Excel or CSV. DocDataEntry is an intelligent document processing platform that adds transparent confidence scoring to every field it extracts."},{q:"What is a word processing document?",a:"A word processing document is a file created with word processing software such as Microsoft Word, Google Docs, or LibreOffice. Common formats include DOCX, DOC, and RTF. These documents contain formatted text, images, tables, and other elements. DocDataEntry can extract data from word processing documents along with PDFs and images, making it a versatile document processing tool for any business."},{q:"What are document processes?",a:"Document processes refer to the workflows involved in handling documents from receipt to final storage. This includes capturing (scanning or uploading), classifying (identifying document type), extracting (pulling out key data fields), validating (checking accuracy), and exporting (saving in the desired format). DocDataEntry automates all these steps with AI, reducing manual data entry time by up to 80%. The confidence scoring system validates extracted data automatically."},{q:"What is document analyzer AI?",a:"A document analyzer AI is an artificial intelligence system that reads, understands, and extracts data from documents automatically. It uses computer vision to see document layouts, natural language processing to understand text, and machine learning to improve accuracy over time. DocDataEntry's document analyzer AI processes invoices, receipts, forms, and reports, assigning a confidence score to every field it extracts so you know exactly which data to trust."},{q:"How does free AI document analysis work?",a:"Free AI document analysis works by uploading your document to an AI-powered platform that processes it at no cost. DocDataEntry offers a free tier that processes up to 10 documents per month with full confidence scoring. Simply upload your PDF, image, or Word document, and the AI automatically detects tables, form fields, headers, and data. Each extracted field gets a confidence score from 0-100%, and fields below 90% are flagged for your review."},{q:"Where can I use a document analyzer online free?",a:"You can use DocDataEntry's document analyzer online free right here on this website. No sign-up required for the free tier. Simply go to the Upload page, select your document (PDF, image, or DOCX), and the AI will extract structured data with confidence scores. Results can be exported to Excel, CSV, or JSON. It's the most transparent free AI document analysis tool available."},{q:"How does AI document processing save time for accountants?",a:"Accountants spend hours manually entering data from client invoices and receipts into accounting software. DocDataEntry's AI document processing extracts all key fields automatically: invoice numbers, dates, vendor names, amounts, tax, and line items. The confidence scoring means you only review fields the AI is unsure about (typically 10-20%), cutting review time by 80%. This frees accountants to focus on advisory work instead of data entry."},{q:"Is intelligent document processing secure?",a:"Yes. DocDataEntry uses industry-standard security including encryption in transit (TLS 1.3) and at rest (AES-256). Your documents are processed in isolated secure environments and automatically deleted within 24 hours. Extracted data is never shared with third parties. We comply with SOC 2 and GDPR standards for data protection."},{q:"What types of documents can be processed?",a:"DocDataEntry processes a wide range of business documents: invoices, receipts, purchase orders, bank statements, insurance forms, contracts, resumes/CVs, medical forms, tax documents, shipping labels, and table-heavy reports. We support PDF, PNG, JPG, and DOCX input formats with output to Excel (XLSX), CSV, JSON, and XML."}].map(function(faq){return'<div class="faq-item rounded-2xl border border-neutral-800 bg-neutral-900/30 transition-all hover:border-neutral-700"><button class="faq-question flex w-full items-center justify-between px-6 py-5 text-left"><span class="text-base font-medium text-neutral-200">'+faq.q+'</span><svg class="faq-icon h-5 w-5 shrink-0 text-neutral-500 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="faq-answer hidden px-6 pb-5"><p class="text-sm leading-relaxed text-neutral-400">'+faq.a+'</p></div></div>'}).join('')}</div>
+      <script>(function(){document.querySelectorAll('.faq-question').forEach(function(btn){btn.addEventListener('click',function(){var answer=btn.nextElementSibling;var icon=btn.querySelector('.faq-icon');var isOpen=!answer.classList.contains('hidden');answer.classList.toggle('hidden');icon.style.transform=isOpen?'rotate(0deg)':'rotate(180deg)';})})})();</script>
+    </section>
+
+    <!-- Footer links to About/Privacy/Terms/Contact -->
+    <section class="mx-auto max-w-7xl px-6 py-12 reveal-on-scroll">
+      <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 rounded-2xl border border-neutral-800 bg-neutral-900/20 px-8 py-6">
+        <span class="text-sm font-medium text-neutral-500">Learn more:</span>
+        <a href="/about" class="flex items-center gap-1.5 text-sm text-neutral-400 transition-colors hover:text-brand-400"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>About Us</a>
+        <a href="/privacy" class="flex items-center gap-1.5 text-sm text-neutral-400 transition-colors hover:text-brand-400"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>Privacy Policy</a>
+        <a href="/terms" class="flex items-center gap-1.5 text-sm text-neutral-400 transition-colors hover:text-brand-400"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>Terms & Conditions</a>
+        <a href="/contact" class="flex items-center gap-1.5 text-sm text-neutral-400 transition-colors hover:text-brand-400"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>Contact Us</a>
+        <a href="/how-it-works" class="flex items-center gap-1.5 text-sm text-neutral-400 transition-colors hover:text-brand-400"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>How It Works</a>
+        <a href="/pricing" class="flex items-center gap-1.5 text-sm text-neutral-400 transition-colors hover:text-brand-400"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Pricing</a>
+        <a href="/blog" class="flex items-center gap-1.5 text-sm text-neutral-400 transition-colors hover:text-brand-400"><svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>Blog</a>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
     <section class="mx-auto max-w-7xl px-6 py-24 text-center reveal-on-scroll">
-      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Ready to extract with confidence?</h2>
+      <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Ready to start intelligent document processing?</h2>
       <p class="mx-auto mt-4 max-w-xl text-lg text-neutral-400">No more guessing. Know exactly what your AI got right &mdash; and what needs a second look.</p>
       <a href="/upload" class="mt-8 inline-flex items-center gap-2 rounded-xl bg-neutral-100 px-8 py-4 text-base font-semibold text-neutral-950 shadow-2xl shadow-brand-500/25 transition-all hover:bg-neutral-200 hover:shadow-brand-500/35">
         Upload your first document
@@ -367,8 +417,8 @@ const faqSchema = {
     if (convertBtn && inputSelect && outputSelect) {
       convertBtn.addEventListener('click', function (e) {
         try {
-          localStorage.setItem('pdf2dataai_input_format', inputSelect.value);
-          localStorage.setItem('pdf2dataai_output_format', outputSelect.value);
+          localStorage.setItem('docdataentry_input_format', inputSelect.value);
+          localStorage.setItem('docdataentry_output_format', outputSelect.value);
         } catch (err) {
           // localStorage unavailable
         }

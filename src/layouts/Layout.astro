@@ -4,14 +4,16 @@ export interface Props {
   description?: string;
   canonical?: string;
   noindex?: boolean;
+  breadcrumbs?: { name: string; url: string }[];
 }
 const {
-  title = "PDF to Excel AI — AI Document Extraction & Data Converter",
-  description = "Free AI-powered PDF to Excel converter. Extract tables, invoices, receipts & forms with confidence scoring. Smart document scanner with automated data extraction. Try now.",
-  canonical = "https://pdf2dataai.com",
+  title = "DocDataEntry — AI Document Data Entry & Extraction with Confidence Scoring",
+  description = "Free AI-powered document data entry tool. Extract invoices, receipts, and forms with per-field confidence scoring. Smart document processing for accountants and small businesses. Try now.",
+  canonical = "https://docdataentry.com",
   noindex = false,
+  breadcrumbs,
 } = Astro.props;
-const keywords = "PDF to Excel AI, AI invoice extractor, automated receipt processing, PDF data extraction, smart document scanner, PDF to Excel converter, AI document extraction, receipt scanning AI, invoice data extraction, PDF table extraction";
+const keywords = "intelligent document processing, automated document processing, AI document processing, intelligent document processing software, document processing, intelligent document processing platform, AI document data entry, document data extraction, invoice data extraction, receipt scanner AI, automated data entry, document scanner AI, PDF data extraction, invoice OCR, document entry software, document analyzer AI, free AI document analysis, document analyzer online free";
 import '../styles/global.css';
 ---
 
@@ -26,25 +28,29 @@ import '../styles/global.css';
     <meta name="theme-color" content="#0a0a0a" />
     <meta name="keywords" content={keywords} />
     <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
-    <meta name="author" content="PDF2DataAI" />
+    <meta name="author" content="DocDataEntry" />
     <link rel="canonical" href={canonical} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:site_name" content="PDF2DataAI" />
-    <meta property="og:image" content="https://pdf2dataai.com/og-image.png" />
+    <meta property="og:site_name" content="DocDataEntry" />
+    <meta property="og:image" content="https://docdataentry.com/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="https://pdf2dataai.com/og-image.png" />
+    <meta name="twitter:image" content="https://docdataentry.com/og-image.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <script type="application/ld+json">{JSON.stringify({"@context":"https://schema.org","@type":"Organization","name":"DocDataEntry","url":"https://docdataentry.com","description":"AI-powered document data entry with per-field confidence scoring","foundingDate":"2025"})}</script>
+    {breadcrumbs && breadcrumbs.length > 0 && (
+      <script type="application/ld+json">{JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":breadcrumbs.map((b, i) => ({"@type":"ListItem","position":i+1,"name":b.name,"item":b.url}))})}</script>
+    )}
   </head>
   <body>
     <slot />

@@ -76,6 +76,8 @@ html {
   scroll-padding-top: 5rem;
 }
 
+img { max-width: 100%; height: auto; }
+
 body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;

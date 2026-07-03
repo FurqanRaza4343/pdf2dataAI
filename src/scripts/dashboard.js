@@ -1,6 +1,6 @@
 (function () {
   function renderDocuments() {
-    var docs = window.PDF2DataAI.getLocalDocuments();
+    var docs = window.DocDataEntry.getLocalDocuments();
     var emptyState = document.getElementById('empty-state');
     var list = document.getElementById('documents-list');
 

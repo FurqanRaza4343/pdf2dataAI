@@ -1,8 +1,8 @@
 (function () {
-  var STORE_KEY = 'pdf2dataai_local_docs';
+  var STORE_KEY = 'docdataentry_local_docs';
   var FUNCTION_URL = 'https://4jbc5v9a.function2.insforge.app/ai-extract-public';
 
-  window.PDF2DataAI = {
+  window.DocDataEntry = {
     getLocalDocuments: function () {
       try { return JSON.parse(localStorage.getItem(STORE_KEY)) || []; } catch { return []; }
     },
