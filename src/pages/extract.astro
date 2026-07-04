@@ -35,11 +35,19 @@ import Footer from '../components/Footer.astro';
           <h1 class="text-2xl font-bold tracking-tight" id="doc-title">Invoice</h1>
           <p class="text-sm text-neutral-500" id="doc-meta"></p>
         </div>
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-2">
           <span id="overall-badge" class="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium"></span>
-          <button id="export-btn" class="inline-flex items-center gap-2 rounded-xl border border-neutral-800 px-4 py-2.5 text-sm font-medium text-neutral-300 transition-all hover:border-neutral-700 hover:text-neutral-100">
+          <button id="export-csv-btn" class="inline-flex items-center gap-2 rounded-xl border border-neutral-800 px-3 py-2.5 text-sm font-medium text-neutral-300 transition-all hover:border-neutral-700 hover:text-neutral-100" title="Export as CSV">
             <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-            Export
+            CSV
+          </button>
+          <button id="export-qb-btn" class="inline-flex items-center gap-1.5 rounded-xl border border-neutral-800 px-3 py-2.5 text-xs font-medium text-neutral-400 transition-all hover:border-emerald-700 hover:text-emerald-400" title="Export for QuickBooks Online">
+            <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            QB
+          </button>
+          <button id="export-xero-btn" class="inline-flex items-center gap-1.5 rounded-xl border border-neutral-800 px-3 py-2.5 text-xs font-medium text-neutral-400 transition-all hover:border-blue-700 hover:text-blue-400" title="Export for Xero">
+            <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            Xero
           </button>
         </div>
       </div>

@@ -51,6 +51,7 @@ import '../styles/global.css';
     {breadcrumbs && breadcrumbs.length > 0 && (
       <script type="application/ld+json">{JSON.stringify({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":breadcrumbs.map((b, i) => ({"@type":"ListItem","position":i+1,"name":b.name,"item":b.url}))})}</script>
     )}
+    <script type="module" src="/src/scripts/insforge-init.js"></script>
   </head>
   <body>
     <slot />

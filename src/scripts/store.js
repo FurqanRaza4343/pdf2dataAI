@@ -11,6 +11,9 @@
       var idx = docs.findIndex(function (d) { return d.id === doc.id; });
       if (idx >= 0) docs[idx] = doc; else docs.unshift(doc);
       localStorage.setItem(STORE_KEY, JSON.stringify(docs));
+      if (window.DocDataEntry.currentUser && window.DocDataEntry.saveUserDoc) {
+        window.DocDataEntry.saveUserDoc(doc);
+      }
     },
     deleteLocalDocument: function (id) {
       var docs = this.getLocalDocuments().filter(function (d) { return d.id !== id; });

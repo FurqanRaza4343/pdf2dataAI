@@ -27,25 +27,80 @@
       });
     }
 
-    var exportBtn = document.getElementById('export-btn');
-    if (exportBtn) {
-      exportBtn.addEventListener('click', function () {
+    function downloadCsv(csv, filename) {
+      var blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    var exportCsvBtn = document.getElementById('export-csv-btn');
+    if (exportCsvBtn) {
+      exportCsvBtn.addEventListener('click', function () {
         var header = 'Field,Value,Confidence\n';
         var rows = doc.fields.map(function (f) {
           return '"' + f.label + '","' + f.value + '","' + f.confidence + '%"';
         }).join('\n');
-        var csv = '\uFEFF' + header + rows + '\n\nLine Items\nDescription,Qty,Unit Price,Total\n' +
+        var csv = header + '\nLine Items\nDescription,Qty,Unit Price,Total\n' +
           doc.lineItems.map(function (li) {
             return '"' + li.description + '",' + li.quantity + ',$' + li.unit_price.toFixed(2) + ',$' + li.total.toFixed(2);
           }).join('\n');
+        downloadCsv(csv, doc.fileName.replace(/\.[^.]+$/, '') + '_extracted.csv');
+      });
+    }
 
-        var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-        var url = URL.createObjectURL(blob);
-        var a = document.createElement('a');
-        a.href = url;
-        a.download = doc.fileName.replace(/\.[^.]+$/, '') + '_extracted.csv';
-        a.click();
-        URL.revokeObjectURL(url);
+    var exportQbBtn = document.getElementById('export-qb-btn');
+    if (exportQbBtn) {
+      exportQbBtn.addEventListener('click', function () {
+        var baseName = doc.fileName.replace(/\.[^.]+$/, '');
+        var vendor = doc.fields.find(function (f) { return f.key === 'vendor' || f.key === 'merchant' || f.key === 'supplier'; });
+        var vendorName = vendor ? vendor.value : 'Unknown Vendor';
+        var invoiceNum = doc.fields.find(function (f) { return f.key === 'invoice_number' || f.key === 'invoice_num' || f.key === 'doc_number'; });
+        var invNum = invoiceNum ? invoiceNum.value : baseName;
+        var dateField = doc.fields.find(function (f) { return f.key === 'date' || f.key === 'invoice_date' || f.key === 'doc_date'; });
+        var invDate = dateField ? dateField.value : new Date().toLocaleDateString('en-US');
+        var totalField = doc.fields.find(function (f) { return f.key === 'total' || f.key === 'amount' || f.key === 'grand_total'; });
+        var total = totalField ? totalField.value : '0.00';
+
+        var qbRows = [];
+        if (doc.lineItems && doc.lineItems.length > 0) {
+          doc.lineItems.forEach(function (li) {
+            qbRows.push('"INVOICE","' + invDate + '","' + invNum + '","' + vendorName + '","","' + li.description + '",' + li.quantity + ',' + li.unit_price.toFixed(2) + ',' + li.total.toFixed(2));
+          });
+        } else {
+          qbRows.push('"INVOICE","' + invDate + '","' + invNum + '","' + vendorName + '","","Invoice payment",1,' + total + ',' + total);
+        }
+        var qbCsv = 'Type,Date,Num,Name,Memo,Description,Quantity,Rate,Amount\n' + qbRows.join('\n');
+        downloadCsv(qbCsv, baseName + '_quickbooks.csv');
+      });
+    }
+
+    var exportXeroBtn = document.getElementById('export-xero-btn');
+    if (exportXeroBtn) {
+      exportXeroBtn.addEventListener('click', function () {
+        var baseName = doc.fileName.replace(/\.[^.]+$/, '');
+        var vendor = doc.fields.find(function (f) { return f.key === 'vendor' || f.key === 'merchant' || f.key === 'supplier'; });
+        var vendorName = vendor ? vendor.value : 'Unknown Vendor';
+        var invoiceNum = doc.fields.find(function (f) { return f.key === 'invoice_number' || f.key === 'invoice_num' || f.key === 'doc_number'; });
+        var invNum = invoiceNum ? invoiceNum.value : baseName;
+        var dateField = doc.fields.find(function (f) { return f.key === 'date' || f.key === 'invoice_date' || f.key === 'doc_date'; });
+        var invDate = dateField ? dateField.value : new Date().toLocaleDateString('en-US');
+        var totalField = doc.fields.find(function (f) { return f.key === 'total' || f.key === 'amount' || f.key === 'grand_total'; });
+        var total = totalField ? totalField.value : '0.00';
+
+        var xeroRows = [];
+        if (doc.lineItems && doc.lineItems.length > 0) {
+          doc.lineItems.forEach(function (li) {
+            xeroRows.push('*,"' + vendorName + '","' + invNum + '","","' + invDate + '",,' + total + ',USD,"' + li.description + '",' + li.quantity + ',' + li.unit_price.toFixed(2) + ',200,Tax on Sales,' + li.total.toFixed(2));
+          });
+        } else {
+          xeroRows.push('*,"' + vendorName + '","' + invNum + '","","' + invDate + '",,' + total + ',USD,"Invoice payment",1,' + total + ',200,Tax on Sales,' + total);
+        }
+        var xeroCsv = '*,Contact Name,Invoice Number,Reference,Invoice Date,Due Date,Total,Currency,Description,Quantity,Unit Amount,Account Code,Tax Type,Amount\n' + xeroRows.join('\n');
+        downloadCsv(xeroCsv, baseName + '_xero.csv');
       });
     }
 
