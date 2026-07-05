@@ -111,7 +111,16 @@
           lineItems: data.lineItems || [],
           lineItemsConfidence: data.lineItems && data.lineItems.length > 0 ? 85 : 100,
           rawText: data.rawText || text.slice(0, 2000),
+          fileType: file.type || 'application/pdf',
         };
+
+        if (file.size < 2097152) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            localStorage.setItem('docdataentry_file_' + id, e.target.result);
+          };
+          reader.readAsDataURL(file);
+        }
 
         this.saveLocalDocument(doc);
         return doc;
@@ -119,6 +128,66 @@
         this.saveLocalDocument(fallback);
         return fallback;
       }
+    },
+
+    getFileData: function (id) {
+      try {
+        var data = JSON.parse(localStorage.getItem('docdataentry_file_' + id) || 'null');
+        return data;
+      } catch { return null; }
+    },
+
+    saveFileData: function (id, fileData) {
+      try {
+        localStorage.setItem('docdataentry_file_' + id, JSON.stringify(fileData));
+      } catch (e) {
+        if (e.name === 'QuotaExceededError' || e.code === 22) {
+          try { localStorage.removeItem('docdataentry_file_' + id); } catch {}
+        }
+      }
+    },
+
+    deleteFileData: function (id) {
+      try { localStorage.removeItem('docdataentry_file_' + id); } catch {}
+    },
+
+    extractBatch: async function (files, onProgress) {
+      var results = [];
+      var total = files.length;
+      var completed = 0;
+      var active = [];
+      var MAX_CONCURRENT = 4;
+      var queue = [];
+
+      for (var i = 0; i < files.length; i++) {
+        queue.push(files[i]);
+      }
+
+      function startOne(file) {
+        if (onProgress) onProgress(file.name, 'extracting', completed, total);
+        var p = window.DocDataEntry.extractWithAI(file, null, null).then(function (doc) {
+          completed++;
+          var idx = active.indexOf(p);
+          if (idx >= 0) active.splice(idx, 1);
+          results.push(doc);
+          if (onProgress) onProgress(file.name, doc ? 'done' : 'failed', completed, total);
+          processNext();
+          return doc;
+        });
+        active.push(p);
+      }
+
+      function processNext() {
+        while (active.length < MAX_CONCURRENT && queue.length > 0) {
+          startOne(queue.shift());
+        }
+        if (active.length === 0) return;
+        return Promise.race(active).then(function () {
+          if (active.length > 0 || queue.length > 0) return processNext();
+        });
+      }
+
+      return processNext().then(function () { return results; });
     },
 
     simulateExtraction: function (fileName, inputFormat, outputFormat) {
